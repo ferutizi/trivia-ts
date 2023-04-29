@@ -13,7 +13,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -23,10 +22,34 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "*.ts",
+          "*.tsx"
+        ],
+        "rules": {
+          "quotes": [
+            "error",
+            "single"
+          ]
+        }
+      }
+    ],
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "./node_modules/ts-standard/eslintrc.json"
+    ],
+    "parserOptions": {
+      "project": [
+        "./tsconfig.json"
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -39,5 +62,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "project": "./tsconfig.json",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.0.4"
+  },
+  "ts-standard": {
+    "project": "./tsconfig.json"
   }
 }
