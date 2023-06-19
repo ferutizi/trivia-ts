@@ -12,9 +12,7 @@ export interface Question {
     string
   ]
   isNiche: boolean
-  question: {
-    text: string
-  }
+  question: string
   correctAnswer: string
   incorrectAnswers: [
     string,

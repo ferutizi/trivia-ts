@@ -3,7 +3,6 @@ import { type Question } from './types'
 
 function App (): JSX.Element {
   const [questions, setQuestions] = useState<Question[]>([])
-  /*   const [currentQuestion, setCurrentQuestion] = useState<Question>(questions[0]) */
 
   useEffect(() => {
     void getQuizz()
@@ -22,7 +21,14 @@ function App (): JSX.Element {
       <h1>Trivia</h1>
       <ul>
         {questions.map(item =>
-          <p key={item.id}>{item.category}</p>
+          <div key={item.id}>
+            <p>{item.category}</p>
+            <p>{item.question}</p>
+            <p>{item.correctAnswer}</p>
+            {item.incorrectAnswers.map((i, index) =>
+              <p key={index}>{i}</p>
+            )}
+          </div>
         )}
       </ul>
     </>
