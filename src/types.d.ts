@@ -21,3 +21,7 @@ export interface Question {
   ]
   type: string
 }
+
+export interface Answers {
+  answers: string[]
+}
