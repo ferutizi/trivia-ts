@@ -1,0 +1,37 @@
+.question__container {
+    text-align: center;
+    width: 30em;
+}
+
+/* .question__category {
+
+} */
+
+.question__question {
+    margin: 2em 0;
+}
+
+.answers {
+    padding: 0;
+}
+
+.answers__container {
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+.answers__container:hover {
+    cursor: pointer;
+    background-color: rgb(203, 219, 231);
+}
+
+.answers__container:active {
+    cursor: pointer;
+    background-color: hsl(206, 37%, 65%);
+}
+
+.answers__answer {
+    margin: 0;
+}
