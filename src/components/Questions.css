@@ -3,6 +3,13 @@
     width: 30em;
 }
 
+.question__points {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0;
+}
+
 /* .question__category {
 
 } */
@@ -32,6 +39,17 @@
     background-color: hsl(206, 37%, 65%);
 }
 
-.answers__answer {
-    margin: 0;
+.correct {
+    background-color: green;
+}
+
+.correct:hover {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
+}
+.incorrect:hover {
+    background-color: red;
 }
