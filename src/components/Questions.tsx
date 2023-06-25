@@ -7,12 +7,17 @@ interface QuestionProps {
   points: number
   selectedAnswer: number
   isCorrectAnswer: (question: Question, answerSelected: string, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  currentQuestion: number
+  challenge: boolean
 }
 
 const Questions = (props: QuestionProps): JSX.Element => {
   return (
     <div className='question'>
-      <p className='question__points'>{props.points}⭐️</p>
+      <div style={{ display: 'flex', justifyContent: `${props.challenge ? 'space-between' : 'right'}` }}>
+        {props.challenge && <p className='question__game'>Question {props.currentQuestion}/10</p>}
+        <p className='question__game'>{props.points}⭐️</p>
+      </div>
       {props.questions.map(item =>
         <div key={item.id} className='question__container'>
           <h3 className='question__category'>{item.category}</h3>

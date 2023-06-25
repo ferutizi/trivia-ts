@@ -9,6 +9,8 @@ function App (): JSX.Element {
   const [selectedAnswer, setSelectedAnswer] = useState<number>(0)
   const [points, setPoints] = useState<number>(0)
   const [modalState, setModalState] = useState<boolean>(true)
+  const [challenge, setChallenge] = useState<boolean>(false)
+  const [currentQuestion, setCurrentQuestion] = useState<number>(1)
 
   useEffect(() => {
     void getQuizz()
@@ -20,6 +22,7 @@ function App (): JSX.Element {
     setQuestions(data)
     disorderAnswers(data[0].incorrectAnswers, data[0].correctAnswer)
     setSelectedAnswer(0)
+    challenge && setCurrentQuestion(currentQuestion + 1)
   }
 
   const disorderAnswers = (incorrectAnswers: string[], correctAnswer: string): void => {
@@ -37,8 +40,9 @@ function App (): JSX.Element {
     setAnswers(newAnswers)
   }
 
-  const play = (): void => {
+  const play = (isChallenge: boolean): void => {
     setModalState(false)
+    isChallenge ? setChallenge(true) : setChallenge(false)
   }
 
   const isCorrectAnswer = (question: Question, answerSelected: string, e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
@@ -59,10 +63,11 @@ function App (): JSX.Element {
       <h1 style={{ marginBottom: '0' }}>Quiz</h1>
       <Modal modalState={modalState}>
         <div>
-          <button onClick={() => { play() }}>Play</button>
+          <button onClick={() => { play(false) }}>Free Play</button>
+          <button onClick={() => { play(true) }}>Challenge 10⭐️</button>
         </div>
       </Modal>
-      <Questions questions={questions} answers={answers} points={points} selectedAnswer={selectedAnswer} isCorrectAnswer={isCorrectAnswer} />
+      <Questions questions={questions} answers={answers} points={points} selectedAnswer={selectedAnswer} isCorrectAnswer={isCorrectAnswer} currentQuestion={currentQuestion} challenge={challenge} />
     </>
   )
 }
