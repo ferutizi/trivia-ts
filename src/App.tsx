@@ -1,7 +1,7 @@
 import Modal from './components/Modal'
 import Questions from './components/Questions'
 import { type Question } from './types'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Children } from 'react'
 
 function App (): JSX.Element {
   const [questions, setQuestions] = useState<Question[]>([])

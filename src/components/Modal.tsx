@@ -7,10 +7,16 @@ interface ModalProps {
 
 const Modal = (props: ModalProps): JSX.Element => {
   return (
-    <div>
-      {props.children}
-      {props.modalState}
-    </div>
+    <>
+      {
+      props.modalState
+        ? <div>
+          {props.children}
+          {/* eslint-disable-next-line react/jsx-closing-tag-location */}
+        </div>
+        : <div />
+      }
+    </>
   )
 }
 
