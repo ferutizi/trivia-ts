@@ -10,8 +10,11 @@ const Modal = (props: ModalProps): JSX.Element => {
     <>
       {
       props.modalState
-        ? <div>
-          {props.children}
+        ? <div className='modal__overlay'>
+          <div className='modal__card'>
+            {props.children}
+            {/* eslint-disable-next-line react/jsx-closing-tag-location */}
+          </div>
           {/* eslint-disable-next-line react/jsx-closing-tag-location */}
         </div>
         : <div />

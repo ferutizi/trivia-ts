@@ -1,7 +1,7 @@
 import Modal from './components/Modal'
 import Questions from './components/Questions'
 import { type Question } from './types'
-import { useState, useEffect, Children } from 'react'
+import { useState, useEffect } from 'react'
 
 function App (): JSX.Element {
   const [questions, setQuestions] = useState<Question[]>([])
@@ -62,9 +62,12 @@ function App (): JSX.Element {
     <>
       <h1 style={{ marginBottom: '0' }}>Quiz</h1>
       <Modal modalState={modalState}>
-        <div>
-          <button onClick={() => { play(false) }}>Free Play</button>
-          <button onClick={() => { play(true) }}>Challenge 10⭐️</button>
+        <div className='modal__container'>
+          <h2 className='modal__title'>Quiz Game</h2>
+          <div className='modal__options'>
+            <button className='modal__button' onClick={() => { play(false) }}>Free Play</button>
+            <button className='modal__button' onClick={() => { play(true) }}>Challenge 10⭐️</button>
+          </div>
         </div>
       </Modal>
       <Questions questions={questions} answers={answers} points={points} selectedAnswer={selectedAnswer} isCorrectAnswer={isCorrectAnswer} currentQuestion={currentQuestion} challenge={challenge} />
