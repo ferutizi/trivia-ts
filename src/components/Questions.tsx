@@ -9,6 +9,8 @@ interface QuestionProps {
   isCorrectAnswer: (question: Question, answerSelected: string, e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   currentQuestion: number
   challenge: boolean
+  mute: boolean
+  setMute: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Questions = (props: QuestionProps): JSX.Element => {
@@ -31,6 +33,7 @@ const Questions = (props: QuestionProps): JSX.Element => {
           </ul>
         </div>
       )}
+      <img style={{ width: '60px' }} onClick={() => { props.setMute(!props.mute) }} src={require(`../images/${props.mute ? 'mute' : 'unmute'}.png`)} />
     </div>
   )
 }

@@ -14,6 +14,7 @@ function App (): JSX.Element {
   const [modalState, setModalState] = useState<boolean>(true)
   const [challenge, setChallenge] = useState<boolean>(false)
   const [currentQuestion, setCurrentQuestion] = useState<number>(1)
+  const [mute, setMute] = useState<boolean>(false)
   const [playWrong] = useSound(wrong)
   const [playCorrect] = useSound(correct)
 
@@ -61,10 +62,10 @@ function App (): JSX.Element {
     if (answerSelected === question.correctAnswer) {
       (e.target as HTMLDivElement).classList.add('correct')
       setPoints(points + 1)
-      playCorrect()
+      !mute && playCorrect()
     } else {
       (e.target as HTMLDivElement).classList.add('incorrect')
-      playWrong()
+      !mute && playWrong()
     }
     setTimeout(() => {
       void getQuizz()
@@ -86,10 +87,20 @@ function App (): JSX.Element {
           <div className='modal__options'>
             <button className='modal__button' onClick={() => { play(false) }}>Free Play</button>
             <button className='modal__button' onClick={() => { play(true) }}>Challenge 10⭐️</button>
+            <img style={{ width: '60px' }} onClick={() => { setMute(!mute) }} src={require(`./images/${mute ? 'mute' : 'unmute'}.png`)} />
           </div>
         </div>
       </Modal>
-      <Questions questions={questions} answers={answers} points={points} selectedAnswer={selectedAnswer} isCorrectAnswer={isCorrectAnswer} currentQuestion={currentQuestion} challenge={challenge} />
+      <Questions
+        questions={questions}
+        answers={answers}
+        points={points}
+        selectedAnswer={selectedAnswer}
+        isCorrectAnswer={isCorrectAnswer}
+        currentQuestion={currentQuestion}
+        challenge={challenge} mute={mute}
+        setMute={setMute}
+      />
     </>
   )
 }
