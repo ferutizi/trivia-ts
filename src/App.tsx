@@ -2,6 +2,9 @@ import Modal from './components/Modal'
 import Questions from './components/Questions'
 import { type Question } from './types'
 import { useState, useEffect } from 'react'
+import useSound from 'use-sound'
+import wrong from './sounds/wrong.mp3'
+import correct from './sounds/correct.mp3'
 
 function App (): JSX.Element {
   const [questions, setQuestions] = useState<Question[]>([])
@@ -11,10 +14,18 @@ function App (): JSX.Element {
   const [modalState, setModalState] = useState<boolean>(true)
   const [challenge, setChallenge] = useState<boolean>(false)
   const [currentQuestion, setCurrentQuestion] = useState<number>(1)
+  const [playWrong] = useSound(wrong)
+  const [playCorrect] = useSound(correct)
 
   useEffect(() => {
     void getQuizz()
   }, [])
+
+  useEffect(() => {
+    if (currentQuestion > 10) {
+      endgame()
+    }
+  }, [currentQuestion])
 
   const getQuizz = async (): Promise<void> => {
     const res = await fetch('https://the-trivia-api.com/api/questions?limit=1')
@@ -50,12 +61,20 @@ function App (): JSX.Element {
     if (answerSelected === question.correctAnswer) {
       (e.target as HTMLDivElement).classList.add('correct')
       setPoints(points + 1)
+      playCorrect()
     } else {
       (e.target as HTMLDivElement).classList.add('incorrect')
+      playWrong()
     }
     setTimeout(() => {
       void getQuizz()
     }, 1000)
+  }
+
+  const endgame = (): void => {
+    setModalState(true)
+    setCurrentQuestion(1)
+    setPoints(0)
   }
 
   return (
