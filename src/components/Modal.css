@@ -27,11 +27,12 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .modal__title {
-    font-size: 2em;
+    font-size: 3em;
+    margin: 0
 }
 
 .modal__options {
@@ -52,4 +53,9 @@
 .modal__button:hover {
     cursor: pointer;
     background-color: rgb(203, 219, 231);
+}
+
+.modal__button:active {
+    cursor: pointer;
+    background-color: hsl(206, 37%, 65%);
 }

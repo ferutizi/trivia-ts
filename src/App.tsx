@@ -80,14 +80,18 @@ function App (): JSX.Element {
 
   return (
     <>
-      <h1 style={{ marginBottom: '0' }}>Quiz</h1>
+      <h1 style={{ marginBottom: '0', fontSize: '3em' }}>Quiz</h1>
       <Modal modalState={modalState}>
         <div className='modal__container'>
           <h2 className='modal__title'>Quiz Game</h2>
           <div className='modal__options'>
             <button className='modal__button' onClick={() => { play(false) }}>Free Play</button>
             <button className='modal__button' onClick={() => { play(true) }}>Challenge 10⭐️</button>
-            <img style={{ width: '60px' }} onClick={() => { setMute(!mute) }} src={require(`./images/${mute ? 'mute' : 'unmute'}.png`)} />
+            <img
+              style={{ width: '60px' }}
+              onClick={() => { setMute(!mute) }}
+              src={require(`./images/${mute ? 'mute' : 'unmute'}.png`)}
+            />
           </div>
         </div>
       </Modal>

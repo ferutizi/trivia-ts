@@ -33,7 +33,11 @@ const Questions = (props: QuestionProps): JSX.Element => {
           </ul>
         </div>
       )}
-      <img style={{ width: '60px' }} onClick={() => { props.setMute(!props.mute) }} src={require(`../images/${props.mute ? 'mute' : 'unmute'}.png`)} />
+      <img
+        style={{ width: '60px' }}
+        onClick={() => { props.setMute(!props.mute) }}
+        src={require(`../images/${props.mute ? 'mute' : 'unmute'}.png`)}
+      />
     </div>
   )
 }
