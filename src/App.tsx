@@ -80,7 +80,7 @@ function App (): JSX.Element {
 
   return (
     <>
-      <h1 style={{ marginBottom: '0', fontSize: '3em' }}>Quiz</h1>
+      <h1 style={{ marginBottom: '0', fontSize: '3em' }}>Quiz Game</h1>
       <Modal modalState={modalState}>
         <div className='modal__container'>
           <h2 className='modal__title'>Quiz Game</h2>
