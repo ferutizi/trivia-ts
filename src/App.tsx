@@ -82,6 +82,12 @@ function App (): JSX.Element {
     void getQuizz()
   }
 
+  const returnToMenu = (): void => {
+    setPoints(0)
+    setEnd(false)
+    setMenuState(true)
+  }
+
   return (
     <>
       <h1 style={{ marginBottom: '0', fontSize: '3em' }}>Quiz Game</h1>
@@ -112,7 +118,7 @@ function App (): JSX.Element {
           </div>
           <div className='menu__options'>
             <button className='menu__button' onClick={() => { reset() }}>Reset challenge</button>
-            <button className='menu__button' onClick={() => { play(true) }}>Return to main menu</button>
+            <button className='menu__button' onClick={() => { returnToMenu() }}>Return to main menu</button>
             <img
               style={{ width: '60px' }}
               onClick={() => { setMute(!mute) }}
