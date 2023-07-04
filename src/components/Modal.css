@@ -35,6 +35,12 @@
     margin: 0
 }
 
+.modal__text {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
 .modal__options {
     display: flex;
     flex-direction: column;

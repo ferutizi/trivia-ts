@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import useSound from 'use-sound'
 import wrong from './sounds/wrong.mp3'
 import correct from './sounds/correct.mp3'
+import Endgame from './components/Endgame'
 
 function App (): JSX.Element {
   const [questions, setQuestions] = useState<Question[]>([])
@@ -17,6 +18,7 @@ function App (): JSX.Element {
   const [mute, setMute] = useState<boolean>(false)
   const [playWrong] = useSound(wrong)
   const [playCorrect] = useSound(correct)
+  const [end, setEnd] = useState<boolean>(false)
 
   useEffect(() => {
     void getQuizz()
@@ -24,11 +26,12 @@ function App (): JSX.Element {
 
   useEffect(() => {
     if (currentQuestion > 10) {
-      endgame()
+      setEnd(true)
     }
   }, [currentQuestion])
 
   const getQuizz = async (): Promise<void> => {
+    if (currentQuestion > 10) return
     const res = await fetch('https://the-trivia-api.com/api/questions?limit=1')
     const data = await res.json()
     setQuestions(data)
@@ -69,13 +72,14 @@ function App (): JSX.Element {
     }
     setTimeout(() => {
       void getQuizz()
-    }, 1000)
+    }, 1)
   }
 
-  const endgame = (): void => {
-    setModalState(true)
-    setCurrentQuestion(1)
+  const reset = (): void => {
+    setEnd(false)
     setPoints(0)
+    setCurrentQuestion(1)
+    void getQuizz()
   }
 
   return (
@@ -95,6 +99,28 @@ function App (): JSX.Element {
           </div>
         </div>
       </Modal>
+      <Endgame end={end}>
+        <div className='modal__container'>
+          <h2 className='modal__title'>Quiz Game</h2>
+          <div>
+            <p
+              className='modal__text'
+              style={{ color: `${points > 7 ? '#FFC200' : points > 3 ? 'green' : 'red'}` }}
+            >{points > 7 ? 'You are awesome!' : points > 3 ? 'Well done' : 'You can improve it'}
+            </p>
+            <p className='modal__text'>{points}⭐️</p>
+          </div>
+          <div className='modal__options'>
+            <button className='modal__button' onClick={() => { reset() }}>Reset challenge</button>
+            <button className='modal__button' onClick={() => { play(true) }}>Return to main menu</button>
+            <img
+              style={{ width: '60px' }}
+              onClick={() => { setMute(!mute) }}
+              src={require(`./images/${mute ? 'mute' : 'unmute'}.png`)}
+            />
+          </div>
+        </div>
+      </Endgame>
       <Questions
         questions={questions}
         answers={answers}
