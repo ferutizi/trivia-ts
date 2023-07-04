@@ -84,6 +84,7 @@ function App (): JSX.Element {
 
   const returnToMenu = (): void => {
     setPoints(0)
+    setCurrentQuestion(0)
     setEnd(false)
     setMenuState(true)
   }
@@ -136,6 +137,7 @@ function App (): JSX.Element {
         currentQuestion={currentQuestion}
         challenge={challenge} mute={mute}
         setMute={setMute}
+        returnToMenu={returnToMenu}
       />
     </>
   )

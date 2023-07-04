@@ -11,6 +11,7 @@ interface QuestionProps {
   challenge: boolean
   mute: boolean
   setMute: React.Dispatch<React.SetStateAction<boolean>>
+  returnToMenu: () => void
 }
 
 const Questions = (props: QuestionProps): JSX.Element => {
@@ -33,11 +34,18 @@ const Questions = (props: QuestionProps): JSX.Element => {
           </ul>
         </div>
       )}
-      <img
-        style={{ width: '60px' }}
-        onClick={() => { props.setMute(!props.mute) }}
-        src={require(`../images/${props.mute ? 'mute' : 'unmute'}.png`)}
-      />
+      <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <img
+          style={{ width: '60px', cursor: 'pointer' }}
+          onClick={() => { props.setMute(!props.mute) }}
+          src={require(`../images/${props.mute ? 'mute' : 'unmute'}.png`)}
+        />
+        <img
+          style={{ width: '60px', cursor: 'pointer' }}
+          onClick={() => { props.returnToMenu() }}
+          src={require('../images/casa2.png')}
+        />
+      </div>
     </div>
   )
 }
