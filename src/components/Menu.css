@@ -1,4 +1,4 @@
-.modal__overlay {
+.menu__overlay {
     background-color: rgba(116, 110, 110, 1);
     width: 100vw;
     height: 100vh;
@@ -12,7 +12,7 @@
     justify-content: center;
 }
 
-.modal__card {
+.menu__card {
     background-color: #fff;
     padding: 0 2em;
     text-align: center;
@@ -23,32 +23,32 @@
     box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
 }
 
-.modal__container {
+.menu__container {
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-evenly;
 }
 
-.modal__title {
+.menu__title {
     font-size: 3em;
     margin: 0
 }
 
-.modal__text {
+.menu__text {
     margin: 0;
     font-size: 1.3em;
     font-weight: 600;
 }
 
-.modal__options {
+.menu__options {
     display: flex;
     flex-direction: column;
     gap: 2em;
     align-items: center;
 }
 
-.modal__button {
+.menu__button {
     width: 80%;
     border: 1px solid gray;
     border-radius: 4px;
@@ -57,12 +57,12 @@
     background-color: transparent;
 }
 
-.modal__button:hover {
+.menu__button:hover {
     cursor: pointer;
     background-color: rgb(203, 219, 231);
 }
 
-.modal__button:active {
+.menu__button:active {
     cursor: pointer;
     background-color: hsl(206, 37%, 65%);
 }

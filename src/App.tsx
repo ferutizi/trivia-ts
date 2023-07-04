@@ -1,4 +1,4 @@
-import Modal from './components/Modal'
+import Menu from './components/Menu'
 import Questions from './components/Questions'
 import { type Question } from './types'
 import { useState, useEffect } from 'react'
@@ -12,7 +12,7 @@ function App (): JSX.Element {
   const [answers, setAnswers] = useState<string[]>([])
   const [selectedAnswer, setSelectedAnswer] = useState<number>(0)
   const [points, setPoints] = useState<number>(0)
-  const [modalState, setModalState] = useState<boolean>(true)
+  const [menuState, setMenuState] = useState<boolean>(true)
   const [challenge, setChallenge] = useState<boolean>(false)
   const [currentQuestion, setCurrentQuestion] = useState<number>(1)
   const [mute, setMute] = useState<boolean>(false)
@@ -56,7 +56,7 @@ function App (): JSX.Element {
   }
 
   const play = (isChallenge: boolean): void => {
-    setModalState(false)
+    setMenuState(false)
     isChallenge ? setChallenge(true) : setChallenge(false)
   }
 
@@ -85,12 +85,12 @@ function App (): JSX.Element {
   return (
     <>
       <h1 style={{ marginBottom: '0', fontSize: '3em' }}>Quiz Game</h1>
-      <Modal modalState={modalState}>
-        <div className='modal__container'>
-          <h2 className='modal__title'>Quiz Game</h2>
-          <div className='modal__options'>
-            <button className='modal__button' onClick={() => { play(false) }}>Free Play</button>
-            <button className='modal__button' onClick={() => { play(true) }}>Challenge 10⭐️</button>
+      <Menu menuState={menuState}>
+        <div className='menu__container'>
+          <h2 className='menu__title'>Quiz Game</h2>
+          <div className='menu__options'>
+            <button className='menu__button' onClick={() => { play(false) }}>Free Play</button>
+            <button className='menu__button' onClick={() => { play(true) }}>Challenge 10⭐️</button>
             <img
               style={{ width: '60px' }}
               onClick={() => { setMute(!mute) }}
@@ -98,21 +98,21 @@ function App (): JSX.Element {
             />
           </div>
         </div>
-      </Modal>
+      </Menu>
       <Endgame end={end}>
-        <div className='modal__container'>
-          <h2 className='modal__title'>Quiz Game</h2>
+        <div className='menu__container'>
+          <h2 className='menu__title'>Quiz Game</h2>
           <div>
             <p
-              className='modal__text'
+              className='menu__text'
               style={{ color: `${points > 7 ? '#FFC200' : points > 3 ? 'green' : 'red'}` }}
             >{points > 7 ? 'You are awesome!' : points > 3 ? 'Well done' : 'You can improve it'}
             </p>
-            <p className='modal__text'>{points}⭐️</p>
+            <p className='menu__text'>{points}⭐️</p>
           </div>
-          <div className='modal__options'>
-            <button className='modal__button' onClick={() => { reset() }}>Reset challenge</button>
-            <button className='modal__button' onClick={() => { play(true) }}>Return to main menu</button>
+          <div className='menu__options'>
+            <button className='menu__button' onClick={() => { reset() }}>Reset challenge</button>
+            <button className='menu__button' onClick={() => { play(true) }}>Return to main menu</button>
             <img
               style={{ width: '60px' }}
               onClick={() => { setMute(!mute) }}

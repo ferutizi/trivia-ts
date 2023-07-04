@@ -1,17 +1,17 @@
-import './Modal.css'
+import './Menu.css'
 
-interface ModalProps {
+interface MenuProps {
   children: React.ReactNode
-  modalState: boolean
+  menuState: boolean
 }
 
-const Modal = (props: ModalProps): JSX.Element => {
+const Menu = (props: MenuProps): JSX.Element => {
   return (
     <>
       {
-      props.modalState
-        ? <div className='modal__overlay'>
-          <div className='modal__card'>
+      props.menuState
+        ? <div className='menu__overlay'>
+          <div className='menu__card'>
             {props.children}
             {/* eslint-disable-next-line react/jsx-closing-tag-location */}
           </div>
@@ -23,4 +23,4 @@ const Modal = (props: ModalProps): JSX.Element => {
   )
 }
 
-export default Modal
+export default Menu
