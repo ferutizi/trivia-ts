@@ -43,7 +43,7 @@ const Questions = (props: QuestionProps): JSX.Element => {
         <img
           style={{ width: '60px', cursor: 'pointer' }}
           onClick={() => { props.returnToMenu() }}
-          src={require('../images/casa2.png')}
+          src={require('../images/home.png')}
         />
       </div>
     </div>

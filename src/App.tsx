@@ -72,7 +72,7 @@ function App (): JSX.Element {
     }
     setTimeout(() => {
       void getQuizz()
-    }, 1)
+    }, 1000)
   }
 
   const reset = (): void => {
@@ -99,7 +99,7 @@ function App (): JSX.Element {
             <button className='menu__button' onClick={() => { play(false) }}>Free Play</button>
             <button className='menu__button' onClick={() => { play(true) }}>Challenge 10⭐️</button>
             <img
-              style={{ width: '60px' }}
+              style={{ width: '60px', cursor: 'pointer' }}
               onClick={() => { setMute(!mute) }}
               src={require(`./images/${mute ? 'mute' : 'unmute'}.png`)}
             />
