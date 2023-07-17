@@ -3,16 +3,19 @@
     width: 30em;
 }
 
+@media (max-width: 500px) {
+    .question__container {
+        width: fit-content;
+        margin: 0 1em
+    }
+}
+
 .question__game {
     text-align: right;
     font-size: 1.2em;
     font-weight: 600;
     margin: 0;
 }
-
-/* .question__category {
-
-} */
 
 .question__question {
     margin: 2em 0;
