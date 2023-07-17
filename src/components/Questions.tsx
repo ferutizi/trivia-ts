@@ -17,7 +17,7 @@ interface QuestionProps {
 const Questions = (props: QuestionProps): JSX.Element => {
   return (
     <div className='question'>
-      <div style={{ display: 'flex', justifyContent: `${props.challenge ? 'space-between' : 'right'}` }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: `${props.challenge ? 'space-between' : 'right'}` }}>
         {props.challenge && <p className='question__game'>Question {props.currentQuestion}/10</p>}
         <p className='question__game'>{props.points}⭐️</p>
       </div>

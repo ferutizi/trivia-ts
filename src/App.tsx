@@ -21,10 +21,6 @@ function App (): JSX.Element {
   const [end, setEnd] = useState<boolean>(false)
 
   useEffect(() => {
-    void getQuizz()
-  }, [])
-
-  useEffect(() => {
     if (currentQuestion > 10) {
       setEnd(true)
     }
@@ -56,8 +52,11 @@ function App (): JSX.Element {
   }
 
   const play = (isChallenge: boolean): void => {
-    setMenuState(false)
+    void getQuizz()
     isChallenge ? setChallenge(true) : setChallenge(false)
+    setTimeout(() => {
+      setMenuState(false)
+    }, 300)
   }
 
   const isCorrectAnswer = (question: Question, answerSelected: string, e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
