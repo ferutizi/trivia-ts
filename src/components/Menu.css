@@ -12,12 +12,6 @@
     justify-content: center;
 }
 
-@media (max-width: 500px) {
-    .menu__card {
-        margin: 0 1em
-    }
-}
-
 .menu__card {
     background-color: #fff;
     padding: 0 2em;
@@ -27,6 +21,12 @@
     max-width: 25em;
     border-radius: 8px;
     box-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+}
+
+@media (max-width: 500px) {
+    .menu__card {
+        margin: 0 1em
+    }
 }
 
 .menu__container {
